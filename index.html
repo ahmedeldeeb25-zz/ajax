@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Learn Ajax With PHP & Bootstrap</title>
+    </head>
+    
+    <script>
+        function ajax_request(get_val){
+        var xmlHttp = new XMLHttpRequest();
+            
+            xmlHttp.onreadystatechange = function(){
+                if(xmlHttp.readyState==4 && xmlHttp.status == 200){
+                    var result = document.getElementById('result');
+                    result.innerHTML = xmlHttp.responseText;
+                    
+                }
+            }
+        xmlHttp.open('GET',"data.php?var="+get_val,true);
+        xmlHttp.send();
+        }
+    </script>
+    
+    <body>
+        <button onclick="ajax_request(this.value)">Click Me!</button>
+        <input type="text" onkeyup="ajax_request(this.value)">
+        <div id="result">This is the result div</div>
+    </body>
+</html>
